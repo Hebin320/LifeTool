@@ -1,4 +1,4 @@
-package com.hebin.lifetool.ui;
+package com.hebin.lifetool.ui.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements SwipeFlingAdapter
             R.mipmap.ic_image4,
             R.mipmap.ic_image5,
     };
-    public final String[] title = {"手机号码查询", "测试", "测试", "测试", "测试"};
+    public final String[] title = {"星座运势", "手机号码查询", "微信精选", "测试", "测试"};
 
 
     private int cardWidth;
@@ -73,6 +73,16 @@ public class MainActivity extends AppCompatActivity implements SwipeFlingAdapter
             case "手机号码查询":
                 intent.setClass(MainActivity.this, PhoneLocationActivity.class);
                 startActivity(intent);
+                break;
+            case "微信精选":
+                intent.setClass(MainActivity.this, WeChatNewActivity.class);
+                startActivity(intent);
+                break;
+            case "星座运势":
+                intent.setClass(MainActivity.this, ConstellationListActivity.class);
+                startActivity(intent);
+                break;
+            default:
                 break;
         }
 

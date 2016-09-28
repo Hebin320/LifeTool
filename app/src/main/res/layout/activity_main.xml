@@ -7,7 +7,7 @@
     android:background="@mipmap/ic_background"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.hebin.lifetool.ui.MainActivity">
+    tools:context="com.hebin.lifetool.ui.activity.MainActivity">
 
     <com.hebin.lifetool.widget.swipeview.SwipeFlingAdapterView
         android:id="@+id/swipe_view"

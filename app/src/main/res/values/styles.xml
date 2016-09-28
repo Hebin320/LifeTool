@@ -11,6 +11,8 @@
         <!--设置状态栏颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--窗口的背景颜色-->
+        <item name="android:windowBackground">@color/color_bg</item>
     </style>
 
     <!-- animation 样式 -->

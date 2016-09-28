@@ -12,7 +12,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!--窗口的背景颜色-->
-        <!--<item name="android:windowBackground">@color/color_bg</item>-->
+        <item name="android:windowBackground">@color/color_bg</item>
         <!-- 底部导航栏颜色 -->
         <!--<item name="android:navigationBarColor">@color/colorPrimary</item>-->
     </style>

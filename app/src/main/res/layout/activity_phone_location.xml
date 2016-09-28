@@ -1,13 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_phone_location"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.hebin.lifetool.ui.PhoneLocationActivity">
+    android:orientation="vertical"
+    tools:context="com.hebin.lifetool.ui.activity.PhoneLocationActivity">
 
-</RelativeLayout>
+    <include layout="@layout/public_simple_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:background="@drawable/et_bg_white">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50"
+            android:paddingLeft="@dimen/margin_20">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:hint="请输入手机号码"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/colorPrimary"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_20"
+            android:scaleType="center"
+            android:src="@mipmap/ic_search" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            android:layout_toLeftOf="@+id/iv_search"
+            android:scaleType="center"
+            android:src="@mipmap/ic_et_delete"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_detail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_300"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_50"
+        app:cardCornerRadius="@dimen/margin_15"
+        app:cardElevation="@dimen/margin_20"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_20"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_province"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+            <TextView
+                android:id="@+id/tv_areacode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+            <TextView
+                android:id="@+id/tv_zip"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+            <TextView
+                android:id="@+id/tv_company"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+            <TextView
+                android:id="@+id/tv_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/margin_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <include layout="@layout/public_view_20" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
