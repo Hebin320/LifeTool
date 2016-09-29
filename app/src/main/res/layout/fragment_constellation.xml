@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,146 +10,218 @@
 
     <include layout="@layout/public_loading" />
 
-
-    <TextView
-        android:id="@+id/tv_title"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50"
-        android:gravity="center"
-        android:text="今日运势"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_16" />
+        android:layout_height="match_parent">
 
-    <com.uncopt.android.widget.text.justify.JustifiedTextView
-        android:id="@+id/tv_summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="@dimen/margin_5"
-        android:text="你可能积极思考着自己的财富状态，容易有一些悲观的想法出现，但是物质光靠精打细算很难有所突破，反而使自己的生活兴致降低。" />
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_20">
-
-        <TextView
-            android:id="@+id/tv_all"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="综合指数" />
+            android:orientation="vertical">
 
-        <RatingBar
-            android:id="@+id/rbar_all"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/tv_all"
-            android:numStars="5"
-            android:progressTint="@color/colorPrimary"
-            android:rating="3.5" />
 
-        <TextView
-            android:id="@+id/tv_health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_30"
-            android:layout_toRightOf="@+id/rbar_all"
-            android:text="健康指数  81%" />
-    </RelativeLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/margin_120"
+                android:layout_height="@dimen/margin_150"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="@dimen/margin_10"
+                app:cardElevation="@dimen/margin_15">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_love"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="爱情指数" />
+                    <ImageView
+                        android:id="@+id/iv_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_40"
+                        android:scaleType="fitCenter" />
 
-        <RatingBar
-            android:id="@+id/rbar_love"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/tv_love"
-            android:numStars="5"
-            android:progressTint="@color/colorPrimary"
-            android:rating="3.5" />
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_logo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_16" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_30"
-            android:layout_toRightOf="@+id/rbar_love"
-            android:text="健康指数  81%" />
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_work"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="工作指数" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_2"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:layout_toLeftOf="@+id/tv_title"
+                    android:background="@drawable/line_dotted_black"
+                    android:layerType="software" />
 
-        <RatingBar
-            android:id="@+id/rbar_work"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/tv_work"
-            android:numStars="5"
-            android:progressTint="@color/colorPrimary"
-            android:rating="3.5" />
 
-        <TextView
-            android:id="@+id/tv_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_30"
-            android:layout_toRightOf="@+id/rbar_work"
-            android:text="健康指数  81%" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_50"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="今日运势"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_2"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_toRightOf="@+id/tv_title"
+                    android:background="@drawable/line_dotted_black"
+                    android:layerType="software" />
 
-        <TextView
-            android:id="@+id/tv_rich"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="财运指数" />
+            </RelativeLayout>
 
-        <RatingBar
-            android:id="@+id/rbar_rich"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/tv_rich"
-            android:numStars="5"
-            android:progressTint="@color/colorPrimary"
-            android:rating="3.5" />
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:id="@+id/tv_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/margin_5"
+                android:text="你可能积极思考着自己的财富状态，容易有一些悲观的想法出现，但是物质光靠精打细算很难有所突破，反而使自己的生活兴致降低。" />
 
-        <TextView
-            android:id="@+id/tv_qfriend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_30"
-            android:layout_toRightOf="@+id/rbar_rich"
-            android:text="健康指数  81%" />
-    </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20">
+
+                <TextView
+                    android:id="@+id/tv_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="综合指数" />
+
+                <RatingBar
+                    android:id="@+id/rbar_all"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_toRightOf="@+id/tv_all"
+                    android:numStars="5"
+                    android:progressTint="@color/colorPrimary"
+                    android:rating="3.5" />
+
+                <TextView
+                    android:id="@+id/tv_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_toRightOf="@+id/rbar_all"
+                    android:text="健康指数  81%" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tv_love"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="爱情指数" />
+
+                <RatingBar
+                    android:id="@+id/rbar_love"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_toRightOf="@+id/tv_love"
+                    android:numStars="5"
+                    android:progressTint="@color/colorPrimary"
+                    android:rating="3.5" />
+
+                <TextView
+                    android:id="@+id/tv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_toRightOf="@+id/rbar_love"
+                    android:text="健康指数  81%" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tv_work"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工作指数" />
+
+                <RatingBar
+                    android:id="@+id/rbar_work"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_toRightOf="@+id/tv_work"
+                    android:numStars="5"
+                    android:progressTint="@color/colorPrimary"
+                    android:rating="3.5" />
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_toRightOf="@+id/rbar_work"
+                    android:text="健康指数  81%" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tv_rich"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="财运指数" />
+
+                <RatingBar
+                    android:id="@+id/rbar_rich"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_toRightOf="@+id/tv_rich"
+                    android:numStars="5"
+                    android:progressTint="@color/colorPrimary"
+                    android:rating="3.5" />
+
+                <TextView
+                    android:id="@+id/tv_qfriend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_toRightOf="@+id/rbar_rich"
+                    android:text="健康指数  81%" />
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_10"
+    android:layout_marginLeft="@dimen/margin_10"
+    android:layout_marginRight="@dimen/margin_10"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/margin_4"
+    app:cardElevation="@dimen/margin_8">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:gravity="center|left"
+            android:text="佛山市鸿运汽车站"
+            android:textColor="#2e2222"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_tel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:gravity="center|left"
+            android:text="联系方式:0757-82281287" />
+
+        <TextView
+            android:id="@+id/tv_adds"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:gravity="center|left"
+            android:text="地址:佛山市禅城区文昌路佛山火车站广场西侧" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

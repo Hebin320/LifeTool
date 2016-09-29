@@ -25,6 +25,9 @@ import butterknife.OnClick;
 
 public class ConstellationDetailActivity extends AppCompatActivity {
 
+
+    String title = "";
+    public static final String[] tabTitle = new String[]{"今日运势", "明日运势", "今周运势", "下周运势", "月度运势", "年度运势"};
     @InjectView(R.id.ll_back)
     LinearLayout llBack;
     @InjectView(R.id.tv_public_title)
@@ -34,8 +37,6 @@ public class ConstellationDetailActivity extends AppCompatActivity {
     @InjectView(R.id.vp_constellation)
     ViewPager vpConstellation;
 
-    String title = "";
-    public static final String[] tabTitle = new String[]{"今日运势", "明日运势", "今周运势", "下周运势", "月度运势", "年度运势"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class ConstellationDetailActivity extends AppCompatActivity {
             initviews();
         }
     }
+
 
     @OnClick({R.id.ll_back})
     public void onClick(View view) {
@@ -68,7 +70,9 @@ public class ConstellationDetailActivity extends AppCompatActivity {
         fragments.add(ConstellationYearFragment.newInstance(title, "year"));
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager(), fragments);
         vpConstellation.setAdapter(adapter);
+        vpConstellation.setOffscreenPageLimit(5);
         tabConstellation.setupWithViewPager(vpConstellation);
         tabConstellation.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
+
 }

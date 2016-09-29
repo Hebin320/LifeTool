@@ -19,5 +19,10 @@ public class Baseurl {
      */
     public static String constellation = "http://web.juhe.cn:8080/constellation/getAll?key=041fb439215a91b898d0fcb5922eb08f&consName=";
 
+    /**
+     * 长途汽车信息
+     */
+    public static String busInfo = "http://op.juhe.cn/onebox/bus/query?key=ab4960978bb4b03e8f18b3682acdb03a&station=";
+
 
 }

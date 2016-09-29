@@ -1,4 +1,4 @@
-package com.hebin.lifetool.biz;
+package com.hebin.lifetool.biz.constellation;
 
 import android.content.Context;
 
@@ -10,7 +10,7 @@ import com.hebin.lifetool.biz.base.IBaseBiz;
 import com.hebin.lifetool.biz.base.IBaseOnListener;
 import com.hebin.lifetool.custom.volley.MyJsonObjectRequest;
 import com.hebin.lifetool.custom.volley.VolleyController;
-import com.hebin.lifetool.entity.ConstellationdayEntity;
+import com.hebin.lifetool.entity.constellation.ConstellationweekEntity;
 import com.hebin.lifetool.entity.DataEntity;
 
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
  *
  */
 
-public class ConstellationDayBiz implements IBaseBiz {
+public class ConstellationWeekBiz implements IBaseBiz {
     @Override
     public void getData(Context context, Object T, final IBaseOnListener onListener) {
         DataEntity dataEntity = (DataEntity) T;
@@ -29,8 +29,8 @@ public class ConstellationDayBiz implements IBaseBiz {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
-                ConstellationdayEntity constellationdayEntity = gson.fromJson(response.toString(), ConstellationdayEntity.class);
-                onListener.getSuccess(constellationdayEntity);
+                ConstellationweekEntity constellationweekEntity = gson.fromJson(response.toString(), ConstellationweekEntity.class);
+                onListener.getSuccess(constellationweekEntity);
             }
         }, new Response.ErrorListener() {
             @Override

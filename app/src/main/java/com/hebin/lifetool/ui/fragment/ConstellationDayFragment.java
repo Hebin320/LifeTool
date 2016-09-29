@@ -6,15 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.hebin.lifetool.R;
 import com.hebin.lifetool.biz.base.IBaseView;
-import com.hebin.lifetool.entity.ConstellationdayEntity;
+import com.hebin.lifetool.entity.constellation.ConstellationdayEntity;
 import com.hebin.lifetool.entity.DataEntity;
-import com.hebin.lifetool.presenter.ConstellationDayPresenter;
+import com.hebin.lifetool.presenter.constellation.ConstellationDayPresenter;
 import com.hebin.lifetool.utils.ToastUtils;
 import com.uncopt.android.widget.text.justify.JustifiedTextView;
 
@@ -42,13 +43,25 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
     RatingBar rbarRich;
     @InjectView(R.id.tv_qfriend)
     TextView tvQfriend;
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     @InjectView(R.id.tv_summary)
     JustifiedTextView tvSummary;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    @InjectView(R.id.iv_logo)
+    ImageView ivLogo;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
+    @InjectView(R.id.tv_all)
+    TextView tvAll;
+    @InjectView(R.id.tv_love)
+    TextView tvLove;
+    @InjectView(R.id.tv_work)
+    TextView tvWork;
+    @InjectView(R.id.tv_rich)
+    TextView tvRich;
     private String mParam1;
     private String mParam2;
 
@@ -81,6 +94,8 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
         if (!mParam2.equals("today")) {
             tvTitle.setText("明日运势");
         }
+        ConstellationSetLogo setLogo = new ConstellationSetLogo();
+        setLogo.setLogo(mParam1, ivLogo, tvName);
         return view;
     }
 
@@ -147,4 +162,5 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
     public void isConnect() {
 
     }
+
 }

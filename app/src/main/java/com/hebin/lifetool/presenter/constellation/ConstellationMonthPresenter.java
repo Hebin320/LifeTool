@@ -1,8 +1,8 @@
-package com.hebin.lifetool.presenter;
+package com.hebin.lifetool.presenter.constellation;
 
 import android.content.Context;
 
-import com.hebin.lifetool.biz.ConstellationDayBiz;
+import com.hebin.lifetool.biz.base.ConstellationMonthBiz;
 import com.hebin.lifetool.biz.base.IBaseOnListener;
 import com.hebin.lifetool.biz.base.IBaseView;
 import com.hebin.lifetool.utils.NetUtils;
@@ -11,14 +11,14 @@ import com.hebin.lifetool.utils.NetUtils;
  *
  */
 
-public class ConstellationDayPresenter {
+public class ConstellationMonthPresenter {
 
     private IBaseView baseView;
-    private ConstellationDayBiz dayBiz;
+    private ConstellationMonthBiz dayBiz;
 
-    public ConstellationDayPresenter(IBaseView baseView) {
+    public ConstellationMonthPresenter(IBaseView baseView) {
         this.baseView = baseView;
-        this.dayBiz = new ConstellationDayBiz();
+        this.dayBiz = new ConstellationMonthBiz();
     }
 
     public void getData(Context context) {

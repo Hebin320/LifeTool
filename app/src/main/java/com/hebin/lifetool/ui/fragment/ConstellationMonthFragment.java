@@ -6,38 +6,42 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hebin.lifetool.R;
+import com.hebin.lifetool.biz.base.IBaseView;
+import com.hebin.lifetool.entity.constellation.ConstellationmonthEntity;
+import com.hebin.lifetool.entity.DataEntity;
+import com.hebin.lifetool.presenter.constellation.ConstellationMonthPresenter;
+import com.hebin.lifetool.utils.ToastUtils;
+import com.uncopt.android.widget.text.justify.JustifiedTextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConstellationMonthFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ConstellationMonthFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+public class ConstellationMonthFragment extends Fragment implements IBaseView {
+
+
+    @InjectView(R.id.ll_loading)
+    LinearLayout llLoading;
+    @InjectView(R.id.iv_logo)
+    ImageView ivLogo;
+    @InjectView(R.id.tv_name)
+    TextView tvName;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_info)
+    JustifiedTextView tvInfo;
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
 
-    public ConstellationMonthFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ConstellationMonthFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ConstellationMonthFragment newInstance(String param1, String param2) {
         ConstellationMonthFragment fragment = new ConstellationMonthFragment();
         Bundle args = new Bundle();
@@ -59,8 +63,72 @@ public class ConstellationMonthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_constellation_month, container, false);
+        View view = inflater.inflate(R.layout.fragment_constellation_month, container, false);
+        ButterKnife.inject(this, view);
+        ConstellationSetLogo setLogo = new ConstellationSetLogo();
+        setLogo.setLogo(mParam1, ivLogo, tvName);
+        showLoading();
+        ConstellationMonthPresenter presenter = new ConstellationMonthPresenter(this);
+        presenter.getData(getContext());
+        return view;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    @Override
+    public DataEntity getData() {
+        DataEntity dataEntity = new DataEntity();
+        dataEntity.setConsname(mParam1);
+        dataEntity.setType(mParam2);
+        return dataEntity;
+    }
+
+    @Override
+    public void getSuccess(int type, Object T) {
+        switch (type) {
+            case 1:
+                ConstellationmonthEntity entity = (ConstellationmonthEntity) T;
+                tvDate.setText("日期    " + entity.getDate());
+                tvInfo.setText(
+                        "综合\n" + entity.getAll() + "\n" + "\n" +
+                                "健康\n" + entity.getHealth() + "\n" + "\n" +
+                                "爱情\n" + entity.getLove() + "\n" + "\n" +
+                                "财运\n" + entity.getMoney() + "\n" + "\n" +
+                                "工作\n" + entity.getWork());
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void getFailed(int type, Object T) {
+        noConnect();
+    }
+
+    @Override
+    public void showLoading() {
+        llLoading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        llLoading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void noConnect() {
+        ToastUtils.getInstance().showNoNet();
+    }
+
+    @Override
+    public void isConnect() {
+
+    }
+
 
 }

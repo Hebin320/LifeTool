@@ -1,4 +1,4 @@
-package com.hebin.lifetool.entity;
+package com.hebin.lifetool.entity.constellation;
 
 /**
  * Created by Administrator on 2016/9/28.

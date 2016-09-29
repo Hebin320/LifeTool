@@ -8,9 +8,9 @@ public class DataEntity {
 
     private int page;
     private String phone;
-
     private String consname;
     private String type;
+    private String station;
 
     public void setPage(int page) {
         this.page = page;
@@ -44,5 +44,13 @@ public class DataEntity {
 
     public String getType() {
         return type;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
+    }
+
+    public String getStation() {
+        return station;
     }
 }

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_50" />
 
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_constellation"
         android:layout_width="match_parent"
