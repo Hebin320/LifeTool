@@ -26,8 +26,9 @@
                 android:layout_height="match_parent"
                 android:background="@color/transparent"
                 android:hint="请输入手机号码"
-                android:inputType="textEmailAddress"
+                android:inputType="phone"
                 android:textColorHint="@color/colorPrimary"
+
                 />
 
         </android.support.design.widget.TextInputLayout>

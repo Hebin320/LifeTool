@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.hebin.lifetool.R;
 import com.hebin.lifetool.adapter.TabAdapter;
-import com.hebin.lifetool.ui.fragment.ConstellationDayFragment;
-import com.hebin.lifetool.ui.fragment.ConstellationMonthFragment;
-import com.hebin.lifetool.ui.fragment.ConstellationWeekFragment;
-import com.hebin.lifetool.ui.fragment.ConstellationYearFragment;
+import com.hebin.lifetool.ui.fragment.constellation.ConstellationDayFragment;
+import com.hebin.lifetool.ui.fragment.constellation.ConstellationMonthFragment;
+import com.hebin.lifetool.ui.fragment.constellation.ConstellationWeekFragment;
+import com.hebin.lifetool.ui.fragment.constellation.ConstellationYearFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,7 @@ import butterknife.OnClick;
 public class ConstellationDetailActivity extends AppCompatActivity {
 
 
-    String title = "";
-    public static final String[] tabTitle = new String[]{"今日运势", "明日运势", "今周运势", "下周运势", "月度运势", "年度运势"};
+
     @InjectView(R.id.ll_back)
     LinearLayout llBack;
     @InjectView(R.id.tv_public_title)
@@ -36,6 +35,9 @@ public class ConstellationDetailActivity extends AppCompatActivity {
     TabLayout tabConstellation;
     @InjectView(R.id.vp_constellation)
     ViewPager vpConstellation;
+
+    String title = "";
+    public static final String[] tabTitle = new String[]{"今日运势", "明日运势", "今周运势", "下周运势", "月度运势", "年度运势"};
 
 
     @Override

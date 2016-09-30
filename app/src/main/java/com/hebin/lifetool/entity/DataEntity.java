@@ -6,11 +6,15 @@ package com.hebin.lifetool.entity;
 
 public class DataEntity {
 
+
     private int page;
     private String phone;
     private String consname;
     private String type;
     private String station;
+    private String time;
+    private String month;
+    private String day;
 
     public void setPage(int page) {
         this.page = page;
@@ -52,5 +56,29 @@ public class DataEntity {
 
     public String getStation() {
         return station;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public String getDay() {
+        return day;
     }
 }

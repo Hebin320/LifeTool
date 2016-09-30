@@ -1,4 +1,4 @@
-package com.hebin.lifetool.ui.fragment;
+package com.hebin.lifetool.ui.fragment.constellation;
 
 
 import android.os.Bundle;
@@ -12,16 +12,16 @@ import android.widget.TextView;
 
 import com.hebin.lifetool.R;
 import com.hebin.lifetool.biz.base.IBaseView;
-import com.hebin.lifetool.entity.constellation.ConstellationmonthEntity;
+import com.hebin.lifetool.entity.constellation.ConstellationyearEntity;
 import com.hebin.lifetool.entity.DataEntity;
-import com.hebin.lifetool.presenter.constellation.ConstellationMonthPresenter;
+import com.hebin.lifetool.presenter.constellation.ConstellationYearPresenter;
 import com.hebin.lifetool.utils.ToastUtils;
 import com.uncopt.android.widget.text.justify.JustifiedTextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ConstellationMonthFragment extends Fragment implements IBaseView {
+public class ConstellationYearFragment extends Fragment implements IBaseView {
 
 
     @InjectView(R.id.ll_loading)
@@ -30,20 +30,27 @@ public class ConstellationMonthFragment extends Fragment implements IBaseView {
     ImageView ivLogo;
     @InjectView(R.id.tv_name)
     TextView tvName;
+    @InjectView(R.id.tv_title)
+    TextView tvTitle;
     @InjectView(R.id.tv_date)
     TextView tvDate;
+    @InjectView(R.id.tv_all)
+    TextView tvAll;
     @InjectView(R.id.tv_info)
     JustifiedTextView tvInfo;
 
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    @InjectView(R.id.tv_mima_title)
+    TextView tvMimaTitle;
+    @InjectView(R.id.tv_mima)
+    JustifiedTextView tvMima;
     private String mParam1;
     private String mParam2;
 
 
-    public static ConstellationMonthFragment newInstance(String param1, String param2) {
-        ConstellationMonthFragment fragment = new ConstellationMonthFragment();
+    public static ConstellationYearFragment newInstance(String param1, String param2) {
+        ConstellationYearFragment fragment = new ConstellationYearFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,12 +70,12 @@ public class ConstellationMonthFragment extends Fragment implements IBaseView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_constellation_month, container, false);
+        View view = inflater.inflate(R.layout.fragment_constellation_year, container, false);
         ButterKnife.inject(this, view);
         ConstellationSetLogo setLogo = new ConstellationSetLogo();
         setLogo.setLogo(mParam1, ivLogo, tvName);
         showLoading();
-        ConstellationMonthPresenter presenter = new ConstellationMonthPresenter(this);
+        ConstellationYearPresenter presenter = new ConstellationYearPresenter(this);
         presenter.getData(getContext());
         return view;
     }
@@ -91,14 +98,16 @@ public class ConstellationMonthFragment extends Fragment implements IBaseView {
     public void getSuccess(int type, Object T) {
         switch (type) {
             case 1:
-                ConstellationmonthEntity entity = (ConstellationmonthEntity) T;
-                tvDate.setText("日期    " + entity.getDate());
-                tvInfo.setText(
-                        "综合\n" + entity.getAll() + "\n" + "\n" +
-                                "健康\n" + entity.getHealth() + "\n" + "\n" +
-                                "爱情\n" + entity.getLove() + "\n" + "\n" +
-                                "财运\n" + entity.getMoney() + "\n" + "\n" +
-                                "工作\n" + entity.getWork());
+                ConstellationyearEntity entity = (ConstellationyearEntity) T;
+                tvDate.setText("日期   " + entity.getDate());
+                tvAll.setText("幸运石  " + entity.getLuckyStone());
+                tvMimaTitle.setText(entity.getMima().getInfo());
+                tvMima.setText(entity.getMima().getText().get(0));
+                tvInfo.setText("工作: " + entity.getCareer().get(0) + "\n\n" +
+                        "爱情: " + entity.getLove().get(0) + "\n\n" +
+                        "健康: " + entity.getHealth().get(0) + "\n\n" +
+                        "财运: " + entity.getFinance().get(0)
+                );
                 break;
             default:
                 break;
@@ -129,6 +138,4 @@ public class ConstellationMonthFragment extends Fragment implements IBaseView {
     public void isConnect() {
 
     }
-
-
 }

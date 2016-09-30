@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/margin_20"
     android:paddingRight="@dimen/margin_20"
-    tools:context="com.hebin.lifetool.ui.fragment.ConstellationYearFragment">
+    tools:context="com.hebin.lifetool.ui.fragment.constellation.ConstellationYearFragment">
 
     <include layout="@layout/public_loading" />
 

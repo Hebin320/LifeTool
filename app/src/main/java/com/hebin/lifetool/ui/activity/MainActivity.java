@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity implements SwipeFlingAdapter
             R.mipmap.ic_image2,
             R.mipmap.ic_image3,
             R.mipmap.ic_image4,
+            R.mipmap.ic_image5,
+            R.mipmap.ic_image3
     };
-    public final String[] title = {"星座运势", "手机号码查询", "微信精选", "长途汽车信息"};
-
+    public final String[] title = {"星座运势", "历史的今天", "新闻头条", "手机号码查询", "微信精选", "长途汽车信息"};
 
     private int cardWidth;
     private int cardHeight;
@@ -83,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements SwipeFlingAdapter
                 break;
             case "长途汽车信息":
                 intent.setClass(MainActivity.this, BusActivity.class);
+                startActivity(intent);
+                break;
+            case "历史的今天":
+                intent.setClass(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+                break;
+            case "新闻头条":
+                intent.setClass(MainActivity.this, NewTopActivity.class);
                 startActivity(intent);
                 break;
             default:

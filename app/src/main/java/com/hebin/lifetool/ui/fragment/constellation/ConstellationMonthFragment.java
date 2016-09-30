@@ -1,4 +1,4 @@
-package com.hebin.lifetool.ui.fragment;
+package com.hebin.lifetool.ui.fragment.constellation;
 
 
 import android.os.Bundle;
@@ -12,41 +12,38 @@ import android.widget.TextView;
 
 import com.hebin.lifetool.R;
 import com.hebin.lifetool.biz.base.IBaseView;
-import com.hebin.lifetool.entity.constellation.ConstellationweekEntity;
+import com.hebin.lifetool.entity.constellation.ConstellationmonthEntity;
 import com.hebin.lifetool.entity.DataEntity;
-import com.hebin.lifetool.presenter.constellation.ConstellationWeekPresenter;
+import com.hebin.lifetool.presenter.constellation.ConstellationMonthPresenter;
 import com.hebin.lifetool.utils.ToastUtils;
 import com.uncopt.android.widget.text.justify.JustifiedTextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ConstellationWeekFragment extends Fragment implements IBaseView {
+public class ConstellationMonthFragment extends Fragment implements IBaseView {
 
 
     @InjectView(R.id.ll_loading)
     LinearLayout llLoading;
-    @InjectView(R.id.tv_title)
-    TextView tvTitle;
-    @InjectView(R.id.tv_date)
-    TextView tvDate;
-    @InjectView(R.id.tv_all)
-    TextView tvAll;
-    @InjectView(R.id.tv_info)
-    JustifiedTextView tvInfo;
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     @InjectView(R.id.iv_logo)
     ImageView ivLogo;
     @InjectView(R.id.tv_name)
     TextView tvName;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_info)
+    JustifiedTextView tvInfo;
+
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
 
 
-    public static ConstellationWeekFragment newInstance(String param1, String param2) {
-        ConstellationWeekFragment fragment = new ConstellationWeekFragment();
+    public static ConstellationMonthFragment newInstance(String param1, String param2) {
+        ConstellationMonthFragment fragment = new ConstellationMonthFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,16 +63,13 @@ public class ConstellationWeekFragment extends Fragment implements IBaseView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_constellation_week, container, false);
+        View view = inflater.inflate(R.layout.fragment_constellation_month, container, false);
         ButterKnife.inject(this, view);
-        showLoading();
-        ConstellationWeekPresenter presenter = new ConstellationWeekPresenter(this);
-        presenter.getData(getContext());
-        if (!mParam2.equals("week")) {
-            tvTitle.setText("下周运势");
-        }
         ConstellationSetLogo setLogo = new ConstellationSetLogo();
         setLogo.setLogo(mParam1, ivLogo, tvName);
+        showLoading();
+        ConstellationMonthPresenter presenter = new ConstellationMonthPresenter(this);
+        presenter.getData(getContext());
         return view;
     }
 
@@ -97,11 +91,16 @@ public class ConstellationWeekFragment extends Fragment implements IBaseView {
     public void getSuccess(int type, Object T) {
         switch (type) {
             case 1:
-                ConstellationweekEntity entity = (ConstellationweekEntity) T;
-                tvDate.setText("日期   " + entity.getDate());
-                tvAll.setText("综合指数   " + entity.getWeekth());
-                tvInfo.setText(entity.getWork() + "\n" + "\n" + entity.getMoney() +  "\n" + "\n" + entity.getHealth()  + "\n" + "\n"
-                        + entity.getLove() +  "\n" + "\n" + entity.getJob());
+                ConstellationmonthEntity entity = (ConstellationmonthEntity) T;
+                tvDate.setText("日期    " + entity.getDate());
+                tvInfo.setText(
+                        "综合: " + entity.getAll() + "\n" + "\n" +
+                                "健康: " + entity.getHealth() + "\n" + "\n" +
+                                "爱情: " + entity.getLove() + "\n" + "\n" +
+                                "财运: " + entity.getMoney() + "\n" + "\n" +
+                                "工作: " + entity.getWork());
+                break;
+            default:
                 break;
         }
     }
@@ -130,5 +129,6 @@ public class ConstellationWeekFragment extends Fragment implements IBaseView {
     public void isConnect() {
 
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.hebin.lifetool.ui.fragment;
+package com.hebin.lifetool.ui.fragment.constellation;
 
 
 import android.os.Bundle;
@@ -8,45 +8,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.hebin.lifetool.R;
 import com.hebin.lifetool.biz.base.IBaseView;
-import com.hebin.lifetool.entity.constellation.ConstellationdayEntity;
+import com.hebin.lifetool.entity.constellation.ConstellationweekEntity;
 import com.hebin.lifetool.entity.DataEntity;
-import com.hebin.lifetool.presenter.constellation.ConstellationDayPresenter;
+import com.hebin.lifetool.presenter.constellation.ConstellationWeekPresenter;
 import com.hebin.lifetool.utils.ToastUtils;
 import com.uncopt.android.widget.text.justify.JustifiedTextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ConstellationDayFragment extends Fragment implements IBaseView {
+public class ConstellationWeekFragment extends Fragment implements IBaseView {
 
 
     @InjectView(R.id.ll_loading)
     LinearLayout llLoading;
-    @InjectView(R.id.rbar_all)
-    RatingBar rbarAll;
-    @InjectView(R.id.tv_health)
-    TextView tvHealth;
-    @InjectView(R.id.rbar_love)
-    RatingBar rbarLove;
-    @InjectView(R.id.tv_color)
-    TextView tvColor;
-    @InjectView(R.id.rbar_work)
-    RatingBar rbarWork;
-    @InjectView(R.id.tv_number)
-    TextView tvNumber;
-    @InjectView(R.id.rbar_rich)
-    RatingBar rbarRich;
-    @InjectView(R.id.tv_qfriend)
-    TextView tvQfriend;
-    @InjectView(R.id.tv_summary)
-    JustifiedTextView tvSummary;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.tv_all)
+    TextView tvAll;
+    @InjectView(R.id.tv_info)
+    JustifiedTextView tvInfo;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -54,19 +41,12 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
     ImageView ivLogo;
     @InjectView(R.id.tv_name)
     TextView tvName;
-    @InjectView(R.id.tv_all)
-    TextView tvAll;
-    @InjectView(R.id.tv_love)
-    TextView tvLove;
-    @InjectView(R.id.tv_work)
-    TextView tvWork;
-    @InjectView(R.id.tv_rich)
-    TextView tvRich;
     private String mParam1;
     private String mParam2;
 
-    public static ConstellationDayFragment newInstance(String param1, String param2) {
-        ConstellationDayFragment fragment = new ConstellationDayFragment();
+
+    public static ConstellationWeekFragment newInstance(String param1, String param2) {
+        ConstellationWeekFragment fragment = new ConstellationWeekFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -86,13 +66,13 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_constellation, container, false);
+        View view = inflater.inflate(R.layout.fragment_constellation_week, container, false);
         ButterKnife.inject(this, view);
         showLoading();
-        ConstellationDayPresenter presenter = new ConstellationDayPresenter(this);
+        ConstellationWeekPresenter presenter = new ConstellationWeekPresenter(this);
         presenter.getData(getContext());
-        if (!mParam2.equals("today")) {
-            tvTitle.setText("明日运势");
+        if (!mParam2.equals("week")) {
+            tvTitle.setText("下周运势");
         }
         ConstellationSetLogo setLogo = new ConstellationSetLogo();
         setLogo.setLogo(mParam1, ivLogo, tvName);
@@ -117,25 +97,13 @@ public class ConstellationDayFragment extends Fragment implements IBaseView {
     public void getSuccess(int type, Object T) {
         switch (type) {
             case 1:
-                ConstellationdayEntity entity = (ConstellationdayEntity) T;
-                tvSummary.setText(entity.getSummary());
-                tvHealth.setText("健康指数   " + entity.getHealth());
-                tvColor.setText("幸运颜色   " + entity.getColor());
-                tvNumber.setText("幸运数字   " + entity.getNumber());
-                tvQfriend.setText("速配好友   " + entity.getQFriend());
-                rbarAll.setRating(getRating(entity.getAll()));
-                rbarLove.setRating(getRating(entity.getLove()));
-                rbarWork.setRating(getRating(entity.getWork()));
-                rbarRich.setRating(getRating(entity.getMoney()));
-                break;
-            default:
+                ConstellationweekEntity entity = (ConstellationweekEntity) T;
+                tvDate.setText("日期   " + entity.getDate());
+                tvAll.setText("综合指数   " + entity.getWeekth());
+                tvInfo.setText(entity.getWork() + "\n" + "\n" + entity.getMoney() +  "\n" + "\n" + entity.getHealth()  + "\n" + "\n"
+                        + entity.getLove() +  "\n" + "\n" + entity.getJob());
                 break;
         }
-    }
-
-    private float getRating(String string) {
-        float rating = Float.parseFloat(string.substring(0, string.length() - 1)) / 20;
-        return rating;
     }
 
     @Override

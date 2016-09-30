@@ -1,4 +1,4 @@
-package com.hebin.lifetool.ui.fragment;
+package com.hebin.lifetool.ui.fragment.constellation;
 
 
 import android.widget.ImageView;

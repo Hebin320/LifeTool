@@ -34,7 +34,9 @@
         <activity android:name=".ui.activity.WebViewActivity" />
         <activity android:name=".ui.activity.ConstellationListActivity" />
         <activity android:name=".ui.activity.ConstellationDetailActivity" />
-        <activity android:name=".ui.activity.BusActivity"></activity>
+        <activity android:name=".ui.activity.BusActivity" />
+        <activity android:name=".ui.activity.HistoryActivity" />
+        <activity android:name=".ui.activity.NewTopActivity"></activity>
     </application>
 
 </manifest>
