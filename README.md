@@ -3,8 +3,11 @@
 This example contains some of the gadgets in life,You can view the horoscope, history today, mobile phone number attribution and so on, but also you can read some news headlines.
 This example uses MVP mode, use the T-MVP way to avoid multiple, messy problems, in this case can be very good to see the network request, data processing, using the view loading in the MVP project, can make better use of the MVP mode
 
+![image](https://github.com/Hebin320/ImageSave/blob/master/img/lifetool_01.gif)
 
+![image](https://github.com/Hebin320/ImageSave/blob/master/img/lifetool_02.gif)
 
+![image](https://github.com/Hebin320/ImageSave/blob/master/img/lifetool_03.gif)
 
 
 ## License ##
